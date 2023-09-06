@@ -19,13 +19,13 @@ AnimeDownloader is your trusty sidekick in the world of anime. It's your one-sto
 2. Install the required Python libraries using `pip install -r requirements.txt`.
 3. Run the `main.py` script and let the anime magic begin! 🧙
 
-## AnimePahe Magic 🪄
+## AnimePahe Magic ◕⩊◕
 
 We've integrated AnimePahe's superpowers to fetch your episodes seamlessly. Say goodbye to buffering! 🧙‍♂️🎩
 
 ## Contribution 💪
 
-We welcome fellow anime enthusiasts to join our crew! Pull requests are like Shuriken; they help us get things done faster! 🥷
+We welcome fellow anime enthusiasts to join our crew! Pull requests are like Shuriken; they help us get things done faster! 👒⚔🏴‍☠️🌊
 
 ## License 📜
 
