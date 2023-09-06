@@ -31,8 +31,20 @@ We welcome fellow anime enthusiasts to join our crew! Pull requests are like Shu
 
 This project is licensed under the MIT License. It's as free as a Pikachu in the wild! ⚡🐭
 
+
 ## Disclaimer ⚠️
 
 Remember to be a responsible anime pirate! Only download content you have the right to access. We don't want to anger the anime gods! 😇🙏
 
 Get ready for an anime-tastic journey with AnimeDownloader! Let the downloading spree begin! 🌟📥
+
+## Note: Updating the Base URL ⚠️
+
+AnimePahe is known to change its base URL from time to time. If you encounter issues with the current base URL (https://animepahe.ru/), here's how you can update it to ensure that AnimeDownloader continues to work seamlessly:
+
+1. Open the `pahe.py` file in your project directory.
+
+2. Locate the `url` variable at the beginning of the file, which contains the current AnimePahe base URL:
+
+   `url = "https://animepahe.ru/"`
+   Update with the Current Url
