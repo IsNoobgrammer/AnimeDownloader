@@ -117,10 +117,20 @@ def dl_apahe2(url: str) -> str:
 #print(dl_apahe2("https://pahe.win/HVLTy"))
 
 def download_file(url, destination):
-    response = requests.get(url, stream=True)
-    total_size = int(response.headers.get('content-length', 0))
+    if os.path.exists(destination):
+        file_size = os.path.getsize(destination)
+    else:
+        file_size = 0
 
-    with open(destination, 'wb') as file, tqdm(
+    headers = {'Range': f'bytes={file_size}-'} if file_size else None
+    response = requests.get(url, headers=headers, stream=True)
+    total_size = int(response.headers.get('content-length', 0))
+    if response.status_code == 206:
+        print("Downloading resumed successfully.")
+    elif response.status_code == 200:
+        print("Downloading")
+
+    with open(destination, 'ab') as file, tqdm(
         desc=destination,
         total=total_size,
         unit='B',
