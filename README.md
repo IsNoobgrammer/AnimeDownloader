@@ -29,7 +29,7 @@ We welcome fellow anime enthusiasts to join our crew! Pull requests are like Shu
 
 ## License 📜
 
-This project is licensed under the MIT License. It's as free as a Pikachu in the wild! ⚡🐭
+This project is licensed under the GNU License. It's as free as a Pikachu in the wild! ⚡🐭
 
 
 ## Disclaimer ⚠️
