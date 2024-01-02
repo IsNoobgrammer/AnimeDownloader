@@ -52,11 +52,9 @@ selected_anime = list_of_anime[choice]
 
 # get the selected anime_id
 anime_id = selected_anime[6]
-# print("Selected anime_id : ", anime_id)
 
 # get the total number of episodes in the selected anime
 total_episodes = selected_anime[2]
-# print("Total Episodes :", list_of_anime[choice][2])
 
 
 # print the selected anime details to terminal
@@ -107,7 +105,6 @@ print("Episode Range : ", episode_range)
 
 # Fetch episode IDs
 episode_ids = pahe.mid_apahe(session_id=anime_id, episode_range=episode_range)
-# print("Episode IDs: ", episode_ids)
 
 # Fetch episode download links
 episodes_data = pahe.dl_apahe1(anime_id=anime_id, episode_ids=episode_ids)
@@ -131,16 +128,13 @@ for key, value in episodes_data.items():
     episodes[index] = sorted_links
     index += 1
 
-# print("Episode Data: ", episodes)
+
 
 # Input: Choose language and quality
 available_langs=list(episodes[episode_range[0]].keys())
-# print("Available Langs : ", available_langs)
-
 print("Languages Available :")
 terminal_menu = TerminalMenu(menu_entries=available_langs)
 lang = terminal_menu.show()
-# print("available_langs[lang] : ", available_langs[lang])
 lang = available_langs[lang]
 
 
@@ -149,7 +143,7 @@ available_quality = list(episodes[episode_range[0]][lang])
 available_quality.sort(reverse=True)
 available_quality = [ str(i) for i in available_quality ]
 
-# print("Available Quality : ", available_quality)
+
 print("Quality Available :")
 terminal_menu = TerminalMenu(menu_entries=available_quality)
 quality = int(terminal_menu.show())
@@ -167,26 +161,10 @@ for key, items in episodes.items():
         except:
             pass
 
-# print("Episode Links : \n", episodes)
 
 # Fetch video links
 for key, value in tqdm.tqdm(episodes.items(), desc="Parsing links... "):
     episodes[key] = pahe.dl_apahe2(value)
-
-
-"""pre fetch the download link and show the episode size""" 
-
-# show the total size and episode sizes
-# download_links = {}
-# total_size=0
-# for key, value in episodes.items():
-#     download_link = kwik_token.get_dl_link(value)
-#     download_links[key] = download_link
-#     size = pahe.get_download_size(download_link)
-#     total_size += size
-#     print(f"Episode {key} Size: {size/1024/1024} MB")
-# print(f"\nTotal Size: {total_size/1024/1024} MB")
-
 
 
 # Confirmation and download initiation
@@ -201,33 +179,9 @@ if not os.path.exists(title):
     os.makedirs(title)
 
 
-# print("Episode Download Links : \n", episodes)
-
-
 # Download episodes
 for key, value in tqdm.tqdm(episodes.items(), desc="Downloading Episodes"):
     destination = os.path.join(title,f"{key}_{lang}_{quality}.mp4")
     download_link = kwik_token.get_dl_link(value)
     pahe.download_file(url=download_link, destination=destination)
-
-
-"""download through links fetched before"""
-
-# for key, link in tqdm.tqdm(download_links.items(), desc="Downloading Episodes"):
-#     destination = os.path.join(title,f"{key}_{lang}_{quality}.mp4")
-#     pahe.download_file(url=link, destination=destination)
-
-"""Parallel downloads"""
-
-# procs = []
-# for key, value in episodes.items():
-#     destination = os.path.join(title,f"{key}_{lang}_{quality}.mp4")
-#     download_link = kwik_token.get_dl_link(value)
-
-#     p = Thread(target=pahe.download_file, args=(download_link, destination))
-#     p.start()
-#     procs.append(p)
-
-# for p in procs:
-#     p.join()
 

@@ -48,7 +48,7 @@ def search_apahe(query: str) -> list:
         clean_data.append(hmm)
     return clean_data
 
-#print(search_apahe("horimiya"))
+# print(search_apahe("horimiya"))
 
 def mid_apahe(session_id: str , episode_range: list) -> list:
     """
@@ -105,8 +105,8 @@ def dl_apahe1(anime_id: str, episode_ids: list) -> dict:
 
     return data_dict
 
-#print(dl_apahe1("13e4f8aa-169f-41cc-b7a1-218c88e3b8d2",["9ea4686f8cd114f3d9c065ab113b49a637f8b23dda5bebcf3c7a1aca20e8e371","d8c696836ba4bbdaff7ad3ca5450b410bbf7eec81832f167c3f7d8231eeaa5e1"]))
-#print(dl_apahe1("13e4f8aa-169f-41cc-b7a1-218c88e3b8d2","d8c696836ba4bbdaff7ad3ca5450b410bbf7eec81832f167c3f7d8231eeaa5e1"))
+# print(dl_apahe1("13e4f8aa-169f-41cc-b7a1-218c88e3b8d2",["9ea4686f8cd114f3d9c065ab113b49a637f8b23dda5bebcf3c7a1aca20e8e371","d8c696836ba4bbdaff7ad3ca5450b410bbf7eec81832f167c3f7d8231eeaa5e1"]))
+# print(dl_apahe1("13e4f8aa-169f-41cc-b7a1-218c88e3b8d2","d8c696836ba4bbdaff7ad3ca5450b410bbf7eec81832f167c3f7d8231eeaa5e1"))
 
 
 def dl_apahe2(url: str) -> str:
@@ -123,7 +123,7 @@ def dl_apahe2(url: str) -> str:
     redirect_link = (re.findall(r'(https://kwik\.cx/[^"]+)', r.text))[0]
     return redirect_link
 
-#print(dl_apahe2("https://pahe.win/HVLTy"))
+# print(dl_apahe2("https://pahe.win/HVLTy"))
 
 def download_file(url, destination):
     if os.path.exists(destination):
@@ -134,7 +134,6 @@ def download_file(url, destination):
     headers = {'Range': f'bytes={file_size}-'} if file_size else None
     response = requests.get(url, headers=headers, stream=True)
     total_size = int(response.headers.get('content-length', 0))
-    # print(f"Episode Size: {total_size/1024/1024} MB")
     if response.status_code == 206:
         print("Downloading resumed successfully.")
     elif response.status_code == 200:
@@ -151,10 +150,3 @@ def download_file(url, destination):
             bar.update(len(data))
             file.write(data)
 
-
-# def get_download_size(url):
-#     file_size = 0
-#     headers = {'Range': f'bytes={file_size}-'} if file_size else None
-#     response = requests.get(url, headers=headers, stream=True)
-#     total_size = int(response.headers.get('content-length', 0))
-#     return total_size
