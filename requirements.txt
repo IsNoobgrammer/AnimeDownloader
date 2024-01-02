@@ -2,3 +2,4 @@ grequests
 requests
 tqdm
 colorama
+simple_term_menu
