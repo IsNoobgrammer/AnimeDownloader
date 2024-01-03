@@ -3,7 +3,7 @@ import tqdm
 import os
 import kwik_token   # Import kwik_token module
 import pahe         # Import animepahe module
-from colorama import Fore, Back
+from colorama import Fore
 
 from simple_term_menu import TerminalMenu
 
@@ -61,8 +61,9 @@ total_episodes = selected_anime[2]
 print("Search Result:")
 print(Fore.MAGENTA + selected_anime[0], 
     " - ", selected_anime[4],
-    "\n" + Fore.CYAN +"Rating:", + selected_anime[5], 
-    "\n" + Fore.GREEN +"Episodes:",Fore.GREEN + str(selected_anime[2])
+    "\n" + Fore.CYAN + "Type:", selected_anime[1],
+    "\n" + Fore.YELLOW + "Rating:", + selected_anime[5], 
+    "\n" + Fore.GREEN + "Episodes:",Fore.GREEN + str(selected_anime[2])
 )
 # reset the foreground text color
 print(Fore.RESET, end="")
