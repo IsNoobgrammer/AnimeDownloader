@@ -14,12 +14,12 @@ def get_titles_from_result(list_of_anime):
     """
     horimiya - 2021
     """
-    return [ f"{anime[0]} - {anime[4]}" for anime in list_of_anime ]
+    return [ f"{anime[0]} - {anime[4]} ({anime[1]})" for anime in list_of_anime ]
 
 
 # Function to replace special characters in a string
 def replace_special_characters(input_string, replacement="_"):
-    special_characters = "!@#$%^&*()_+{}[]|\\:;<>,.?/~`"
+    special_characters = "!@#$%^&*()_+{}[]|\\:;<>,.?/~` "
     for char in special_characters:
         input_string = input_string.replace(char, replacement)
     return input_string
@@ -179,6 +179,7 @@ os.mkdir("Downloads") if not os.path.exists("Downloads") else None, os.chdir("Do
 if not os.path.exists(title):
     os.makedirs(title)
 
+print("\nDownloading in ", os.getcwd() + os.sep + title + "\n")
 
 # Download episodes
 for key, value in tqdm.tqdm(episodes.items(), desc="Downloading Episodes"):
