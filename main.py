@@ -12,7 +12,7 @@ from simple_term_menu import TerminalMenu
 # Function to extract anime titles and year to show in menu
 def get_titles_from_result(list_of_anime):
     """
-    horimiya - 2021
+    Horimiya - 2021 (TV)
     """
     return [ f"{anime[0]} - {anime[4]} ({anime[1]})" for anime in list_of_anime ]
 
