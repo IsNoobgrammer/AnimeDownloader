@@ -96,8 +96,10 @@ while is_not_valid_range:
     # check if episode_range is valid
     if episode_range[0] < 1 or episode_range[0] > total_episodes or episode_range[1] > total_episodes :
         print(f"{Fore.RED}Episode range exceeds total number of episodes. \nSelect a valid range.")
+        print(Fore.RESET, end="")
     else:
         is_not_valid_range = False
+
 
 # show the selected episode range
 print("Episode Range : ", episode_range)
