@@ -19,6 +19,13 @@ AnimeDownloader is your trusty sidekick in the world of anime. It's your one-sto
 2. Install the required Python libraries using `pip install -r requirements.txt`.
 3. Run the `main.py` script and let the anime magic begin! 🧙
 
+### Windows Users
+1. Navigate to the `Windows` folder in the script directory.
+2. Install the required Python libraries using `pip install -r requirements.txt`.
+3. Run the `main.py` script and let the anime magic begin! 🧙
+
+
+
 ## AnimePahe Magic ◕⩊◕
 
 We've integrated AnimePahe's superpowers to fetch your episodes seamlessly. Say goodbye to buffering! 🧙‍♂️🎩
