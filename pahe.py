@@ -1,6 +1,7 @@
 import grequests
 import requests
 import re
+import os
 from tqdm import tqdm
 session=requests.session()
 
@@ -29,6 +30,11 @@ def search_apahe(query: str) -> list:
     search_url = url + "api?m=search&q=" + query
     response = session.get(search_url)
     data = response.json()
+
+    # if data is empty, return an empty list. i.e. no anime found
+    if "data" not in data:
+        return []
+
     clean_data = []
     for i in data["data"]:
         hmm = []
@@ -42,7 +48,7 @@ def search_apahe(query: str) -> list:
         clean_data.append(hmm)
     return clean_data
 
-#print(search_apahe("horimiya"))
+# print(search_apahe("horimiya"))
 
 def mid_apahe(session_id: str , episode_range: list) -> list:
     """
@@ -71,6 +77,8 @@ def mid_apahe(session_id: str , episode_range: list) -> list:
     return data[(episode_range[0]%30)-1:30*(pages[1]-pages[0]-1)+episode_range[1]%30]
 
 #print(mid_apahe("e8e5a274-b2a0-ae45-de26-803004f3299b",[29,31]))
+
+
 def dl_apahe1(anime_id: str, episode_ids: list) -> dict:
     """
     Get a list of download links for the given episode IDs asynchronously.
@@ -97,8 +105,9 @@ def dl_apahe1(anime_id: str, episode_ids: list) -> dict:
 
     return data_dict
 
-#print(dl_apahe1("13e4f8aa-169f-41cc-b7a1-218c88e3b8d2",["9ea4686f8cd114f3d9c065ab113b49a637f8b23dda5bebcf3c7a1aca20e8e371","d8c696836ba4bbdaff7ad3ca5450b410bbf7eec81832f167c3f7d8231eeaa5e1"]))
+# print(dl_apahe1("13e4f8aa-169f-41cc-b7a1-218c88e3b8d2",["9ea4686f8cd114f3d9c065ab113b49a637f8b23dda5bebcf3c7a1aca20e8e371","d8c696836ba4bbdaff7ad3ca5450b410bbf7eec81832f167c3f7d8231eeaa5e1"]))
 # print(dl_apahe1("13e4f8aa-169f-41cc-b7a1-218c88e3b8d2","d8c696836ba4bbdaff7ad3ca5450b410bbf7eec81832f167c3f7d8231eeaa5e1"))
+
 
 def dl_apahe2(url: str) -> str:
     """
@@ -114,7 +123,7 @@ def dl_apahe2(url: str) -> str:
     redirect_link = (re.findall(r'(https://kwik\.cx/[^"]+)', r.text))[0]
     return redirect_link
 
-#print(dl_apahe2("https://pahe.win/HVLTy"))
+# print(dl_apahe2("https://pahe.win/HVLTy"))
 
 def download_file(url, destination):
     if os.path.exists(destination):
@@ -140,3 +149,4 @@ def download_file(url, destination):
         for data in response.iter_content(chunk_size=69420):
             bar.update(len(data))
             file.write(data)
+
